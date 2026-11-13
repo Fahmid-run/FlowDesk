@@ -1,12 +1,15 @@
 {
-  "name": "FlowDesk",
+  "name": "@flowdesk",
   "private": true,
   "scripts": {
-    "build": "turbo run build",
-    "dev": "turbo run dev",
-    "lint": "turbo run lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "check-types": "turbo run check-types"
+    "dev": "turbo dev --filter=@flowdesk/api",
+    "build": "pnpm --filter @flowdesk/database contract:emit && turbo build",
+    "typecheck": "turbo typecheck",
+    "test": "turbo test",
+    "lint": "turbo lint",
+    "db:init": "pnpm --filter @flowdesk/database db:init",
+    "db:update": "pnpm --filter @flowdesk/database db:update",
+    "db:emit": "pnpm --filter @flowdesk/database contract:emit"
   },
   "devDependencies": {
     "prettier": "3.9.6",
